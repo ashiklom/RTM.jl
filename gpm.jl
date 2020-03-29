@@ -43,5 +43,5 @@ function gpm(k, refractive, N)
     RN = Ra + Ta * Rsub * t / denomy
     TN = Ta * Tsub / denomy
    
-    RN, TN
+    [RN TN]
 end
