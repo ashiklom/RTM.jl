@@ -1,13 +1,15 @@
 include("./RTM.jl")
 using .RTM
-import RCall
+
+p4 = prospect4(1.4, 40, 0.01, 0.01)
+p4N = prospect4.(
+    [1.1:0.1:2.0;],
+    40,
+    0.01,
+    0.01
+)
+
 using Plots
 
-# PROSPECT should look like this
-refractive = RCall.rcopy(RCall.reval("rrtm:::refractive_p45"))
-kmat = RCall.rcopy(RCall.reval("rrtm:::dataspec_p4"))
-theta = 40
-N = 1.4
-k = kmat * [40, 0.01, 0.01] ./ N
-rt = RTM.gpm.(k, refractive, N)
-rt2 = vcat(rt...)
+p4N_refl = hcat([x[:,1] for x in p4N]...)
+plot(p4N_refl)

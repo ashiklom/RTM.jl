@@ -1,3 +1,5 @@
+using GSL: sf_expint_E1
+
 function gpm(k, refractive, N)
     if k <= 0.0
         trans = 1.0
