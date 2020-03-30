@@ -2,6 +2,7 @@ module RTM
 using Serialization: deserialize
 
 export prospect4
+export foursail
 
 # Load PROSPECT data
 refractive_p45 = deserialize("data/refractive_p45")
@@ -10,8 +11,10 @@ kmat_p4 = deserialize("data/kmat_p4")
 kmat_p5 = deserialize("data/kmat_p5")
 kmat_pd = deserialize("data/kmat_pd")
 
-# Source functions
-include("tav_abs.jl")
+# PROSPECT functions
+include("prospect.jl")
+include("sail.jl")
+
 include("gpm.jl")
 include("prospect.jl")
 end

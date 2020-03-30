@@ -43,3 +43,9 @@ for idx in CartesianIndices(chi_s)
     chi_s[idx], chi_o[idx], frho[idx], ftau[idx] =
         volscatt(angles[idx[1]], angles[idx[2]], angles[idx[3]], angles[idx[4]])
 end
+
+##################################################
+# PRO4SAIL example
+using RTM
+lrt = prospect4(1.4, 40, 0.01, 0.01)
+canopy = vcat(foursail.(lrt[:,1], lrt[:,2], 0.1, 3, 0.9, 0, 0, 0)...)

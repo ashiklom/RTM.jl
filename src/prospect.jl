@@ -1,3 +1,6 @@
+include("tav_abs.jl")
+include("gpm.jl")
+
 function prospect4(N, Cab, Cw, Cm)
     cc = [Cab, Cw, Cm] ./ N
     k = kmat_p4 * cc
