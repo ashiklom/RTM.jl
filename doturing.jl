@@ -2,16 +2,20 @@ include("RTM.jl")
 using .RTM
 using Turing
 using Distributions
-
 using ForwardDiff
-function expint_E1(x::ForwardDiff.Dual)
-    RTM.expint_E1(x.value)
+
+function prospect4(N, Cab, Cw, Cm)
+    RTM.prospect4(N, Cab, Cw, Cm)
 end
 
-obs = prospect4(1.4, 40, 0.01, 0.01)[:,1] .+
-    Normal()
-
-noise = Normal()
+function prospect4(
+    N::ForwardDiff.Dual,
+    Cab::ForwardDiff.Dual,
+    Cw::ForwardDiff.Dual,
+    Cm::ForwardDiff.Dual,
+)
+    RTM.prospect4(N.value, Cab.value, Cw.value, Cm.value)
+end
 
 @model fitprospect(obs) = begin
     # Priors
@@ -26,18 +30,19 @@ noise = Normal()
     end
 end
 
-chain = sample(fitprospect(obs), NUTS(), 100)
+obs = prospect4(1.4, 40, 0.01, 0.01)[:,1]
+
+# Very fast, but extremely inefficient. Algorithm may not be adaptive-enough?
+chain = sample(fitprospect(obs), MH(), 5000)
+
+# Visualize the chains
+using Plots
+using StatsPlots
 plot(chain)
 
-# chain = sample(fitprospect(obs), NUTS(), 1000)
+# Very efficient, but slow sampling. Need to figure out how to speed it up.
+# Probably related to automatic differentiation.
+chain2 = sample(fitprospect(obs), NUTS(), 100)
+plot(chain2)
 
-# c2_alg = Gibbs(MH(:N), MH(:Cab), MH(:Cw), MH(:Cm), :resid)
-# c2 = sample(fitprospect(obs), MH(), 1000)
-
-# using Plots
-# using StatsPlots
-# using Distributions
-# plot(InverseGamma(1, 0.2), xlims = (0, 3))
-
-# import Pkg
-# Pkg.add("StatsPlots")
+# See Turing documentation: https://turing.ml/dev/docs/using-turing/guide
