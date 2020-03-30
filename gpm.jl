@@ -1,10 +1,16 @@
 using GSL: sf_expint_E1
 
+# Make this a package-specific generic so that we can add additional methods
+# later (especially, for ForwardDiff.Dual)
+function expint_E1(x)
+    sf_expint_E1(x)
+end
+
 function gpm(k, refractive, N)
     if k <= 0.0
         trans = 1.0
     else
-        trans = (1 - k) * exp(-k) + k^2 * sf_expint_E1(k)
+        trans = (1 - k) * exp(-k) + k^2 * expint_E1(k)
     end
 
     # Reflectance/transmittance of a single layer
