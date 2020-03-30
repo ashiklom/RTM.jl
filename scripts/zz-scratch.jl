@@ -27,3 +27,19 @@ ForwardDiff.Dual()
 # for i in 1:2101
 #     rt[i,:] = RTM.gpm(k[i], RTM.refractive_p45[i], N)
 # end
+
+##################################################
+include("src/lidf.jl")
+y = dcum.(0.5, 0.5, 10:5:80)
+
+##################################################
+include("src/volscatt.jl")
+angles = [-60:10:60;]
+
+chi_s, chi_o, frho, ftau = (zeros(Float64, length(angles), length(angles), length(angles), length(angles))
+         for _ in 1:4);
+
+for idx in CartesianIndices(chi_s)
+    chi_s[idx], chi_o[idx], frho[idx], ftau[idx] =
+        volscatt(angles[idx[1]], angles[idx[2]], angles[idx[3]], angles[idx[4]])
+end
