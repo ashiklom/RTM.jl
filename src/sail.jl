@@ -4,10 +4,8 @@ include("refltrans.jl")
 include("hotspot.jl")
 include("volscatt.jl")
 
-function foursail(leaf_refl, leaf_trans,
-                  LAI,
-                  soil_refl,
-                  hot_spot,
+function foursail(leaf_refl, leaf_trans, soil_refl, LAI,
+                  hot_spot = 0.01,
                   solar_zenith = 0,
                   instrument_zenith = 0,
                   azimuth = 0)

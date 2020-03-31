@@ -1,11 +1,4 @@
 using RTM
-function pro4sail(N, Cab, Cw, Cm,
-                  LAI, soil_refl,
-                  hot_spot = 0.01,
-                  args...)
-    lrt = prospect4(N, Cab, Cw, Cm)
-    vcat(foursail.(lrt[:,1], lrt[:,2], LAI, soil_refl, hot_spot; args...))
-end
 
 using ProgressMeter
 
