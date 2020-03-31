@@ -7,12 +7,12 @@ export prospect4, prospect5, prospect5b, prospectd,
     prospect4_4sailh, prospect5_4sailh, prospect5b_4sailh, prospectd_4sailh
 
 # Load PROSPECT data
-refractive_p45 = deserialize("data/refractive_p45")
-refractive_pd = deserialize("data/refractive_pd")
-kmat_p4 = deserialize("data/kmat_p4")
-kmat_p5 = deserialize("data/kmat_p5")
-kmat_pd = deserialize("data/kmat_pd")
-soildat = deserialize("data/soildat")
+refractive_p45 = deserialize("../data/refractive_p45")
+refractive_pd = deserialize("../data/refractive_pd")
+kmat_p4 = deserialize("../data/kmat_p4")
+kmat_p5 = deserialize("../data/kmat_p5")
+kmat_pd = deserialize("../data/kmat_pd")
+soildat = deserialize("../data/soildat")
 
 # Load functions
 include("prospect.jl")

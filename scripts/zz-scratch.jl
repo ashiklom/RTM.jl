@@ -68,24 +68,3 @@ writedlm("data-raw/kmat_p4.dat", hcat(wl, kmat_p4), " ")
 writedlm("data-raw/kmat_p5.dat", hcat(wl, kmat_p5), " ")
 writedlm("data-raw/kmat_pd.dat", hcat(wl, kmat_pd), " ")
 ##################################################
-using RTM
-
-N = 1.4
-Cab = 40
-Car = 10
-Canth = 8
-Cbrown = 0
-Cw = 0.01
-Cm = 0.01
-
-# PROSPECT
-p4 = prospect4(N, Cab, Cw, Cm)
-p5 = prospect5(N, Cab, Car, Cw, Cm)
-p5b = prospect5b(N, Cab, Car, Cbrown, Cw, Cm)
-pd = prospectd(N, Cab, Car, Canth, Cbrown, Cw, Cm)
-
-LAI = 3
-soil_refl = hapke_soil(0.5)
-
-# PROSPECT + SAIL
-p4s = prospect4_4sail(N, Cab, Cw, Cm)
