@@ -49,3 +49,21 @@ end
 using RTM
 lrt = prospect4(1.4, 40, 0.01, 0.01)
 canopy = vcat(foursail.(lrt[:,1], lrt[:,2], 0.1, 3, 0.9, 0, 0, 0)...)
+
+##################################################
+using Serialization
+
+wl = [400:2500;]
+
+refractive_p45 = deserialize("data/refractive_p45")
+refractive_pd = deserialize("data/refractive_pd")
+kmat_p4 = deserialize("data/kmat_p4")
+kmat_p5 = deserialize("data/kmat_p5")
+kmat_pd = deserialize("data/kmat_pd")
+
+using DelimitedFiles
+writedlm("data-raw/refractive_p45.dat", hcat(wl, refractive_p45), " ")
+writedlm("data-raw/refractive_pd.dat", hcat(wl, refractive_pd), " ")
+writedlm("data-raw/kmat_p4.dat", hcat(wl, kmat_p4), " ")
+writedlm("data-raw/kmat_p5.dat", hcat(wl, kmat_p5), " ")
+writedlm("data-raw/kmat_pd.dat", hcat(wl, kmat_pd), " ")
