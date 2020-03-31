@@ -23,7 +23,11 @@ function gpm(k, refractive, N)
     r = r12 + r21 * trans * t
 
     # Reflectance/transmittance of N layers
-    D = sqrt((1 + r + t) * (1 + r - t) * (1 - r + t) * (1 - r - t))
+    D2 = (1 + r + t) * (1 + r - t) * (1 - r + t) * (1 - r - t)
+    if D2 < 0
+        D2 = 0
+    end
+    D = sqrt(D2)
     r2 = r ^ 2
     t2 = t ^ 2
     va = (1 + r2 - t2 + D) / (2 * r)
