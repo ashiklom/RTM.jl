@@ -7,12 +7,13 @@ export prospect4, prospect5, prospect5b, prospectd,
     prospect4_4sailh, prospect5_4sailh, prospect5b_4sailh, prospectd_4sailh
 
 # Load PROSPECT data
-refractive_p45 = deserialize("data/refractive_p45")
-refractive_pd = deserialize("data/refractive_pd")
-kmat_p4 = deserialize("data/kmat_p4")
-kmat_p5 = deserialize("data/kmat_p5")
-kmat_pd = deserialize("data/kmat_pd")
-soildat = deserialize("data/soildat")
+here = @__DIR__
+const refractive_p45 = deserialize(here * "/data/refractive_p45")
+const refractive_pd = deserialize(here * "/data/refractive_pd")
+const kmat_p4 = deserialize(here * "/data/kmat_p4")
+const kmat_p5 = deserialize(here * "/data/kmat_p5")
+const kmat_pd = deserialize(here * "/data/kmat_pd")
+const soildat = deserialize(here * "/data/soildat")
 
 # Load functions
 include("prospect.jl")
