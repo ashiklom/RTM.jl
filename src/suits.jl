@@ -34,14 +34,14 @@ function suits(litab, lidf, tts, tto, cts, cto, psi, ctscto)
         ksli = chi_s / cts
         koli = chi_o / cto
 
-        sobli = frho*pi/ctscto
-        sofli = ftau*pi/ctscto
+        sobli = frho*π/ctscto
+        sofli = ftau*π/ctscto
         bfli  = ctl*ctl
-        ks    = ks+ksli*lidf[i]
-        ko    = ko+koli*lidf[i]
-        bf    = bf+bfli*lidf[i]
-        sob   = sob+sobli*lidf[i]
-        sof   = sof+sofli*lidf[i]
+        ks    += ksli*lidf[i]
+        ko    += koli*lidf[i]
+        bf    += bfli*lidf[i]
+        sob   += sobli*lidf[i]
+        sof   += sofli*lidf[i]
     end
 
     sdb = 0.5 * (ks + bf)

@@ -23,6 +23,7 @@ function volscatt(solar_zenith, instrument_zenith, azimuth, leaf_angle)
     if abs(ss) > 1e-6
         cosbts = -cs / ss
     end
+
     cosbto = 5
     if abs(so) > 1e-6
         cosbto = -co / so
@@ -32,10 +33,9 @@ function volscatt(solar_zenith, instrument_zenith, azimuth, leaf_angle)
         bts = acos(cosbts)
         ds = ss
     else
-        bts = pi
+        bts = π
         ds = cs
     end
-
 
     chi_s = 2/π * ((bts - 0.5π) * cs + sin(bts) * ss)
 
@@ -43,7 +43,7 @@ function volscatt(solar_zenith, instrument_zenith, azimuth, leaf_angle)
         bto = acos(cosbto)
         doo = so
     elseif instrument_zenith < 90
-        bto = pi
+        bto = π
         doo = co
     else
         bto = 0
@@ -54,15 +54,15 @@ function volscatt(solar_zenith, instrument_zenith, azimuth, leaf_angle)
 
     # Auxiliary azimuth angles bt1, bt2, bt3, for bidirectional scattering
     btran1 = abs(bts - bto)
-    btran2 = π - abs(bts + bto - pi)
+    btran2 = π - abs(bts + bto - π)
 
-    if psirad < btran1
+    if psirad <= btran1
         bt1 = psirad
         bt2 = btran1
         bt3 = btran2
     else
         bt1 = btran1
-        if (psirad < btran2)
+        if (psirad <= btran2)
             bt2 = psirad
             bt3 = btran2
         else
@@ -78,7 +78,7 @@ function volscatt(solar_zenith, instrument_zenith, azimuth, leaf_angle)
     end
 
     denom = 2(π^2)
-    frho = ((pi - bt2) * t1 + t2) / denom
+    frho = ((π - bt2) * t1 + t2) / denom
     ftau = (-bt2 * t1 + t2) / denom
     if frho < 0
         frho = 0

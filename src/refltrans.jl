@@ -13,7 +13,7 @@ function refltrans(lai, ks, ko,
     J1ko = Jfunc1(ko, m, lai)
     J2ko = Jfunc2(ko, m, lai)
 
-    Ps    = (sf + sb * rinf)    * J1ks
+    Ps    = (sf + sb * rinf) * J1ks
     Qs    = (sf * rinf + sb) * J2ks
     Pv    = (vf + vb * rinf) * J1ko
     Qv    = (vf * rinf + vb) * J2ko

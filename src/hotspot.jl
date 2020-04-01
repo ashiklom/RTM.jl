@@ -20,7 +20,7 @@ function hotspot(lai, q, tss, ks, ko, dso)
         y1     = 0.
         f1     = 1.
         ca     = exp(-alf)
-        fint   = 0.5 * (1 - ca)
+        fint   = 0.05 * (1 - ca)
         sumint = 0.
 
         for i in 1:20
