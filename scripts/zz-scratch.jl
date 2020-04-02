@@ -68,3 +68,29 @@ writedlm("data-raw/kmat_p4.dat", hcat(wl, kmat_p4), " ")
 writedlm("data-raw/kmat_p5.dat", hcat(wl, kmat_p5), " ")
 writedlm("data-raw/kmat_pd.dat", hcat(wl, kmat_pd), " ")
 ##################################################
+
+include("src/suits.jl")
+include("src/rtgeom.jl")
+include("src/refltrans.jl")
+include("src/hotspot.jl")
+include("src/volscatt.jl")
+include("src/lidf.jl")
+
+leaf_refl =  0.04108688
+leaf_trans = 0.0006602529
+lrt = [leaf_refl leaf_trans]
+soil_refl = 0.2377
+LAI = 3
+hot_spot = 0.01
+solar_zenith = 30
+instrument_zenith = 10
+azimuth = 0
+
+tts = solar_zenith
+tto = instrument_zenith
+psi = solar_zenith
+litab = Array{Float64}(vcat([5:10:75;], [81:2:89;]))
+F_lidf = dcum.(-0.35, -0.15, litab)
+lidf = vcat(F_lidf[1], diff(F_lidf))
+lidf = F_lidf
+ttl = litab[1]
