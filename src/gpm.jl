@@ -1,10 +1,10 @@
-using GSL: sf_expint_E1
+include("expint.jl")
 
 function gpm(k, refractive, N)
     if k <= 0.0
         trans = 1.0
     else
-        trans = (1 - k) * exp(-k) + k^2 * sf_expint_E1(k)
+        trans = (1 - k) * exp(-k) + k^2 * expint(k)
     end
 
     # Reflectance/transmittance of a single layer
