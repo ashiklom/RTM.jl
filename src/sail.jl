@@ -26,7 +26,7 @@ function foursail(leaf_refl, leaf_trans, soil_refl, LAI,
     # Leaf angle distribution
     # TODO: Currently spherical. Make more flexible.
     # TODO: Arbitrary leaf angles (not 13)
-    litab = Array{Float64}(vcat([5:10:75;], [81:2:89;]))
+    litab = Array{Real}(vcat([5:10:75;], [81:2:89;]))
     dcum_in = vcat([10:10:80;], [82:2:88;])
     F_lidf = vcat(dcum.(-0.35, -0.15, dcum_in), 1)
     lidf = F_lidf
