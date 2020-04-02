@@ -61,7 +61,7 @@ macro E₁_cf64(z, n::Integer)
 end
 
 # exponential integral function E₁(z)
-function expint(z::Union{Float64,Complex{Float64}})
+function expint(z::Union{Real,Complex{Real}})
     x² = real(z)^2
     y² = imag(z)^2
     if real(z) > 0 && x² + 0.233*y² ≥ 7.84 # use cf expansion, ≤ 30 terms
