@@ -46,7 +46,7 @@ function foursail(leaf_refl, leaf_trans, soil_refl, LAI,
                dob, dof, sob, sof)
 
     # Canopy reflectance and transmittance
-    rdd, tdd, tsd, rsd, tdo, rdo, rsod, tss, too =
+    rdd, tdd, tsd, rsd, tdo, rdo, tss, too, rsod =
         refltrans(LAI, ks, ko,
                   leaf_refl, leaf_trans,
                   att, m, sigb, sf, sb, vf, vb)

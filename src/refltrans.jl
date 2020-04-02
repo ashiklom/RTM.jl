@@ -39,7 +39,7 @@ function refltrans(lai, ks, ko,
     T3    = (rdo * Qs + tdo * Ps) * rinf
     rsod  = (T1 + T2 - T3) / (1 - rinf2)
 
-    rdd, tdd, tsd, rsd, tdo, rdo, rsod, tss, too
+    rdd, tdd, tsd, rsd, tdo, rdo, tss, too, rsod
 end
 
 function Jfunc1(k, l, t)
@@ -47,7 +47,7 @@ function Jfunc1(k, l, t)
     if abs(del) > 1e-3
         (exp(-l*t) - exp(-k*t)) / (k - l)
     else
-        0.5t * (exp(-k * t) + exp(-l*t)) * (1 - del^2 / 12)
+        0.5t * (exp(-k * t) + exp(-l*t)) * (1 - (del^2) / 12)
     end
 end
 

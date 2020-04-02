@@ -2,7 +2,7 @@ function foursail_lrt(lrt, soil_refl, LAI, args...)
     nwl = size(lrt, 1)
     result = Array{Float64, 2}(undef, nwl, 4)
     for i in 1:nwl
-        result[i,:] = foursail(lrt[i,1], lrt[i,2], LAI, soil_refl[i], args...)
+        result[i,:] = foursail(lrt[i,1], lrt[i,2], soil_refl[i], LAI, args...)
     end
     result
 end
