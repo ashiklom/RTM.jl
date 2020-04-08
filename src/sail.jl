@@ -24,8 +24,9 @@ function foursail(leaf_refl, leaf_trans, soil_refl, LAI,
     dso = sqrt(tants^2 + tanto^2 - 2 * tants * tanto * cospsi)
 
     # Leaf angle distribution
-    # TODO: Currently spherical. Make more flexible.
     # TODO: Arbitrary leaf angles (not 13)
+    # TODO: Customize leaf parameters
+    # TODO: For PRO4SAIL, pull this out of wavelength loop
     litab = Array{Real}(vcat([5:10:75;], [81:2:89;]))
     dcum_in = vcat([10:10:80;], [82:2:88;])
     F_lidf = vcat(dcum.(-0.35, -0.15, dcum_in), 1)
@@ -35,6 +36,7 @@ function foursail(leaf_refl, leaf_trans, soil_refl, LAI,
     end
 
     # Angular distance
+    # TODO: For PRO4SAIL, pull this out of wavelength loop
     ks, ko, sob, sof, sdb, sdf, dob, dof, ddb, ddf =
         suits(litab, lidf, solar_zenith, instrument_zenith,
               cts, cto, azimuth, ctscto)
