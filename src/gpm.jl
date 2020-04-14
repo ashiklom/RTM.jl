@@ -23,26 +23,26 @@ function gpm(k, refractive, N)
     r = r12 + r21 * trans * t
 
     # Reflectance/transmittance of N layers
-    D2 = (1 + r + t) * (1 + r - t) * (1 - r + t) * (1 - r - t)
-    if D2 < 0
-        D2 = 0
-    end
-    D = sqrt(D2)
-    r2 = r ^ 2
-    t2 = t ^ 2
-    va = (1 + r2 - t2 + D) / (2 * r)
-    vb = (1 - r2 + t2 + D) / (2 * t)
-
-    vbNN = vb ^ (N - 1)
-    vbNN2 = vbNN ^ 2
-    va2 = va ^ 2
-    denomx = va2 * vbNN2 - 1
-    Rsub = va * (vbNN2 - 1) / denomx
-    Tsub = vbNN * (va2 - 1) / denomx
-
     if r + t >= 1
         Tsub = t / (t + (1 - t) * (N - 1))
         Rsub = 1 - Tsub
+    else
+        D2 = (1 + r + t) * (1 + r - t) * (1 - r + t) * (1 - r - t)
+        if D2 < 0
+            D2 = 0
+        end
+        D = sqrt(D2)
+        r2 = r ^ 2
+        t2 = t ^ 2
+        va = (1 + r2 - t2 + D) / (2 * r)
+        vb = (1 - r2 + t2 + D) / (2 * t)
+
+        vbNN = vb ^ (N - 1)
+        vbNN2 = vbNN ^ 2
+        va2 = va ^ 2
+        denomx = va2 * vbNN2 - 1
+        Rsub = va * (vbNN2 - 1) / denomx
+        Tsub = vbNN * (va2 - 1) / denomx
     end
 
     denomy = 1 - Rsub * r
