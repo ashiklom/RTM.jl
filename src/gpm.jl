@@ -37,6 +37,11 @@ function gpm(k, refractive, N)
         va = (1 + r2 - t2 + D) / (2 * r)
         vb = (1 - r2 + t2 + D) / (2 * t)
 
+        if vb < 0
+            msg = "t = $t\n\nk = $k\n\ndenom = $denom"
+            throw(DomainError(vb, msg))
+        end
+
         vbNN = vb ^ (N - 1)
         vbNN2 = vbNN ^ 2
         va2 = va ^ 2
