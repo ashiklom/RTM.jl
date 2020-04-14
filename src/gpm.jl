@@ -3,6 +3,9 @@ include("expint.jl")
 function gpm(k, refractive, N)
     if k <= 0.0
         trans = 1.0
+    elseif k > 85.0
+        # Accurate to 1 x 10^-39
+        trans = 0.0
     else
         trans = (1 - k) * exp(-k) + k^2 * expint(k)
     end
@@ -36,11 +39,6 @@ function gpm(k, refractive, N)
         t2 = t ^ 2
         va = (1 + r2 - t2 + D) / (2 * r)
         vb = (1 - r2 + t2 + D) / (2 * t)
-
-        if vb < 0
-            msg = "t = $t\n\nk = $k\n\ndenom = $denom"
-            throw(DomainError(vb, msg))
-        end
 
         vbNN = vb ^ (N - 1)
         vbNN2 = vbNN ^ 2
